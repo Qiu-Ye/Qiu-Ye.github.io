@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,CentOS,GRUB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Qiuye" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="引子 ψ(._. )&amp;gt;  Linux系统开机流程">
+<meta name="keywords" content="Linux,CentOS,GRUB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux开机启动流程">
+<meta property="og:url" content="https://qiu-ye.github.io/2018/04/04/Linux开机启动流程/index.html">
+<meta property="og:site_name" content="Qiuye">
+<meta property="og:description" content="引子 ψ(._. )&amp;gt;  Linux系统开机流程">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180404111232284.png">
+<meta property="og:updated_time" content="2018-04-04T03:40:15.715Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux开机启动流程">
+<meta name="twitter:description" content="引子 ψ(._. )&amp;gt;  Linux系统开机流程">
+<meta name="twitter:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180404111232284.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiu-ye.github.io/2018/04/04/Linux开机启动流程/"/>
+
+
+
+
+
+  <title>Linux开机启动流程 | Qiuye</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a62534a7a2af6c64662b7b1abfce5a21";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/Qiu-Ye" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qiuye</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qiu-ye.github.io/2018/04/04/Linux开机启动流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuye">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qiuye">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux开机启动流程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T11:36:31+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统运维/" itemprop="url" rel="index">
+                    <span itemprop="name">系统运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/04/Linux开机启动流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/04/04/Linux开机启动流程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,326
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180404111232284.png" alt=""></p>
+<p>ψ(._. )&gt;</p>
+<hr>
+<p>Linux系统开机流程</p>
+<a id="more"></a>
+<h3 id="Linux系统开机流程："><a href="#Linux系统开机流程：" class="headerlink" title="Linux系统开机流程："></a>Linux系统开机流程：</h3><h4 id="BIOS：Basic-Input-Output-System"><a href="#BIOS：Basic-Input-Output-System" class="headerlink" title="BIOS：Basic Input Output System"></a>BIOS：Basic Input Output System</h4><p>电源开启，首先登场的是BIOS，即标准输入输出系统，它是电脑最开始执行的程序。它将执行以下步骤：</p>
+<ul>
+<li>读取CMOS中的信息：了解计算机的硬件情况。例如：<ul>
+<li>CPU的总线时钟</li>
+<li>启动设备的搜索顺序</li>
+<li>硬盘大小与型号</li>
+<li>系统时间</li>
+<li>即插即用设备</li>
+<li>各设备的IO地址</li>
+<li>中断请求等……</li>
+</ul>
+</li>
+<li>POST：加电自检。例如：<ul>
+<li>确定可用的内存</li>
+<li>确定时钟速度等……</li>
+</ul>
+</li>
+<li>对硬件进行初始化，设定即插即用设备。<ul>
+<li>有过重装系统经验的同学，会对此步骤有深切的理解。</li>
+<li>重装系统或者需要使用WinPE工具时，要把制作好的U盘启动盘在开机之前插入USB口。</li>
+<li>U盘启动盘此时即作为即插即用设备被识别、读取和设定。</li>
+</ul>
+</li>
+<li>BOOT Sequence：按次序查找引导设备。<ul>
+<li>第一个有引导程序的设备即为本次启动要用到的设备。</li>
+<li>系统默认的启动顺序中本地硬盘通常是最靠前的，而BIOS会总是启动第一个有引导程序的设备。</li>
+<li>因此，如果想加载启动U盘或者光盘中的系统，就要调整其启动顺序排在本地硬盘前面。</li>
+</ul>
+</li>
+<li>从启动设备中读取MBR，并将控制权移交给MBR中的程序。</li>
+</ul>
+<h4 id="MBR：Master-Boot-Reord-主引导记录区"><a href="#MBR：Master-Boot-Reord-主引导记录区" class="headerlink" title="MBR：Master Boot Reord 主引导记录区"></a>MBR：Master Boot Reord 主引导记录区</h4><p>主引导记录区是位于整个硬盘的0磁道0柱面的第一个扇区，只有512个字节，它是由引导加载代码区、磁盘分区表和引导记录标识组成。</p>
+<ul>
+<li>引导加载代码区（Master Boot Code）：<ul>
+<li>只有446字节大小</li>
+<li>用于存放引导加载程序，即Bootloader，也就是说Bootloader能使用的最大空间为446字节。</li>
+</ul>
+</li>
+<li>磁盘分区表（Disk Partition Table）:<ul>
+<li>共有64字节大小</li>
+<li>每个分区需要16个字节描述，硬盘分区表只能描述4个主分区，因此一块磁盘最多只有4个主分区。</li>
+<li>如果需要更多分区就要将一个（或多个）主分区作为扩展分区。</li>
+<li>要注意的是扩展分区是不能直接用作存储的，扩展分区也是主分区的一种，它必须至少包含一个逻辑分区，逻辑分区可以直接用于存储。</li>
+</ul>
+</li>
+<li>引导记录标识（Boot Record ID）:<ul>
+<li>2字节大小</li>
+<li>0x55AA</li>
+</ul>
+</li>
+</ul>
+<p>这里面最重要当属Bootloader——引导加载器，它是在操作系统内核运行之前运行的一小段程序，负责将操作系统内核装入内存，然后将计算机控制权交给操作系统。Windows系统使用的BootLoader叫做ntloader。早期的Linux发行版上，普遍采用的Bootloader是LILO（LInux LOader），后来GRUB诞生了，以其强大的功能毫不留情地代替了LILO的位置。目前使用最广泛的GRUB（GRand Uniform Bootloader）全称应该是是GNU GRUB，现在已经更新到第二代，需要注意的是GRUB2相较于GRUB几乎完全重写，其优势主要表现在以下几点：</p>
+<ol>
+<li>GRUB是动态可配置的。</li>
+<li>GRUB提供菜单供用户选择要启动的操作系统。</li>
+<li>GRUB支持操作系统非常广泛。不但支持所有的Liunx，还能通过链式启动功能支持Windows和OS/2。</li>
+<li>GRUB具有多种形式的用户界面。支持图形界面，能提供带有漂亮背景的启动菜单</li>
+<li>GRUB拥有丰富的控制台命令与用户交互。</li>
+<li>GRUB可以从镜像文件中启动操作系统。</li>
+<li>GRUB支持链式启动。</li>
+<li>GRUB支持多种语言，包括中文。</li>
+</ol>
+<p>GRUB使用三段式引导启动，引导流程如下：</p>
+<ul>
+<li>第一段：位于MBR中的Bootloader区，此阶段产生一个名为<strong>stage1</strong>的文件</li>
+<li>第二段：位于紧接在MBR后面的位置，大概30K左右的代码，主要是文件系统的驱动程序，目的是找到第三段生成的主功能代码文件，此阶段产生一个名为<strong>stage1_5</strong>的文件。</li>
+<li>第三段：位于磁盘上，位置不确定，放置GRUB的主功能代码，用于实现GRUB支持的所有功能，此阶段产生一个名为<strong>stage2</strong>的文件。</li>
+</ul>
+<p>GRUB2使用四段式引导启动,要求必须提供1M的空白空间用于存放其核心代码，位置不限但必须位于2T空间以内，引导流程如下：</p>
+<ul>
+<li>第一段：位于MBR中的Bootloader区，此阶段代码文件名为<strong>boot.img</strong></li>
+<li>第二段：位于存放GRUB2核心文件core.img的第一个扇区，大小为512字节，作用是将核心文件core.img余下的部分读入内存，此阶段代码文件名为<strong>diskboot.img</strong></li>
+<li>第三段：加载GRUB2的内核模块</li>
+<li>第四段：启动操作界面，供用户选择需要启动的操作系统。</li>
+</ul>
+<p>用户在GRUB的操作界面不仅可以选择要启动的内核或操作系统，还可以传递给内核启动参数，之后，就开始加载用户选择的内核或操作系统。</p>
+<h4 id="Kernel：加载内核"><a href="#Kernel：加载内核" class="headerlink" title="Kernel：加载内核"></a>Kernel：加载内核</h4><p>内核镜像通常为bzImage的压缩格式，被加载到内存后先要进行自解压，之后跳转到startup_32函数。<br>startup_32函数的执行代表着Linux第一个进程的开始，进行一番整理操作后便跳到Linux内核的主函数start_kernel。<br>start_kernel函数执行过程中大部分时间都在为Linux内核准备必要的数据结构，以保证子模块的正常运行。完成数据结构初始化后，start_kernel会创建一个名为kernel_init的内核进程，然后进入死循环cpu_idle函数中（此进程的PID为0，主要工作就是调用CPU的idle指令，让CPU降温且省电）。<br>kernel_init的主要工作有以下几点：</p>
+<ul>
+<li>给硬件加载驱动程序</li>
+<li>初始化网络堆栈</li>
+<li>在多CPU的系统中让其他CPU开始工作</li>
+<li>寻找并以只读方式挂载用户指定的根文件系统</li>
+<li>当一切准备工作完成后，kernel_init会调用用户空间的第一个进程——/sbin/init。</li>
+</ul>
+<p>需要注意的是在加载硬件驱动的时候，有可能会借助于ramdisk加载驱动，这一过程在CentOS 5和CentOS 6中体现为不同的流程。CentOS 5中的ramdisk可能会被缓存两次，在CentOS 6中改为文件系统ramfs。</p>
+<ul>
+<li>CentOS 5：initrd，initrd在内存中开辟一块模拟的磁盘空间，Linux内核启动后，先将这个模拟的磁盘当作根文件系统，并执行initrd中的/linuxrc文件，开始加载那些内核要访问的真正的根文件系统所必需的驱动并挂接真正的根文件系统。之后从根分区中启动init进程</li>
+<li>CentOS 6：initramfs，initramfs是一个使用gzip压缩的cpio打包文件。Linux内核将它的内容装入tmpfs，这就不需要附带任何文件驱动就能工作，并且tmpfs支持动态扩展。之后，initramfs直接启动init进程。根分区中的init程序作为备份，在没有initramfs的时候，内核才会挂接分区去找它。</li>
+</ul>
+<h4 id="init："><a href="#init：" class="headerlink" title="init："></a>init：</h4><p>init进程的执行基本标志着开机流程走到了最后一站，init进程会根据用户设定的运行级别对Linux系统进行一系列的初始化操作。比如：启动对应运行级别的服务进程、配置网络、继续为某些硬件加载驱动程序、运行相关软件等。但init进程不单单是做初始化，从系统的启动，一直到关机，init都在守护着系统的运行。随着技术的迭代，init程序在历史上有着许多个不同的身份：</p>
+<ul>
+<li>SysV：init，CentOS 5及之前的版本<ul>
+<li>配置文件：/etc/inittab</li>
+<li>流程：<ul>
+<li>/sbin/init –&gt; (/etc/inittab) –&gt; 设置默认运行级别 –&gt; 运行系统初始化脚本、完成系统初始化（/etc/rc.d/rc.sysinit） –&gt; 关闭对应的需要关闭的服务，启动需要启动的服务 –&gt; 设置登陆终端</li>
+</ul>
+</li>
+<li>系统初始化脚本：/etc/rc.d/rc.sysinit<ul>
+<li>设置主机名</li>
+<li>设置欢迎信息</li>
+<li>激活udev和selinux</li>
+<li>挂载/etc/fstab文件中定义的文件系统</li>
+<li>检测根文件系统，并以读写方式重新挂载根文件系统</li>
+<li>设置系统时钟</li>
+<li>激活swap设备</li>
+<li>根据/etc/sysctl.conf文件设置内核参数</li>
+<li>激活lvm及software raid设备</li>
+<li>加载额外设备的驱动程序</li>
+<li>清理操作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Upstart：init，CentOS 6，支持并行启动<ul>
+<li>配置文件：/etc/inittab，/etc/init/*.conf</li>
+</ul>
+</li>
+<li>Systemd：systemd，CentOS 7，<ul>
+<li>配置文件：/usr/lib/systemd/system，/etc/systemd/system</li>
+<li>systemd新特性<ul>
+<li>系统引导时实现服务并行启动</li>
+<li>按需激活进程<ul>
+<li>基于socket的激活机制，socket与服务程序分离</li>
+<li>基于bus的激活机制</li>
+<li>基于device的激活机制</li>
+<li>基于path的激活机制</li>
+</ul>
+</li>
+<li>系统状态快照<ul>
+<li>保存各unit的当前状态信息于持久存储设备中</li>
+<li>向后兼容sysv init脚本</li>
+</ul>
+</li>
+<li>基于依赖关系定义服务控制逻辑</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>完结撒花~撒花~<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/04/04/Linux开机启动流程/">Linux开机启动流程</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Qiuye 的个人博客">Qiuye</a></p>
+  <p><span>发布时间:</span>2018年04月04日 - 11:04</p>
+  <p><span>最后更新:</span>2018年04月04日 - 11:04</p>
+  <p><span>原始链接:</span><a href="/2018/04/04/Linux开机启动流程/" title="Linux开机启动流程">https://qiu-ye.github.io/2018/04/04/Linux开机启动流程/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://qiu-ye.github.io/2018/04/04/Linux开机启动流程/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+
+      </div>
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/CentOS/" rel="tag"><i class="fa fa-tag"></i> CentOS</a>
+          
+            <a href="/tags/GRUB/" rel="tag"><i class="fa fa-tag"></i> GRUB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/09/linux-3-10-67内核编译/" rel="next" title="linux-3.10.67内核编译">
+                <i class="fa fa-chevron-left"></i> linux-3.10.67内核编译
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Qiuye" />
+            
+              <p class="site-author-name" itemprop="name">Qiuye</p>
+              <p class="site-description motion-element" itemprop="description">心虽有所觉，但亦不做解！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Qiu-Ye" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:qiuye.wz@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/u/3613317793/home?wvr=5" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux系统开机流程："><span class="nav-number">2.</span> <span class="nav-text">Linux系统开机流程：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BIOS：Basic-Input-Output-System"><span class="nav-number">2.1.</span> <span class="nav-text">BIOS：Basic Input Output System</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MBR：Master-Boot-Reord-主引导记录区"><span class="nav-number">2.2.</span> <span class="nav-text">MBR：Master Boot Reord 主引导记录区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kernel：加载内核"><span class="nav-number">2.3.</span> <span class="nav-text">Kernel：加载内核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#init："><span class="nav-number">2.4.</span> <span class="nav-text">init：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qiuye</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共27.3k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+     <script type="text/javascript" src="/js/src/fireworks.js"></script>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://qiuye.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://qiu-ye.github.io/2018/04/04/Linux开机启动流程/';
+          this.page.identifier = '2018/04/04/Linux开机启动流程/';
+          this.page.title = 'Linux开机启动流程';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qiuye.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
