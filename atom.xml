@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiu-ye.github.io/"/>
-  <updated>2018-04-04T03:40:15.715Z</updated>
+  <updated>2018-09-14T07:26:16.935Z</updated>
   <id>https://qiu-ye.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo-admin</title>
+    <link href="https://qiu-ye.github.io/2018/09/14/Hexo-admin/"/>
+    <id>https://qiu-ye.github.io/2018/09/14/Hexo-admin/</id>
+    <published>2018-09-14T07:25:00.000Z</published>
+    <updated>2018-09-14T07:26:16.935Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hexo-admin"><a href="#Hexo-admin" class="headerlink" title="Hexo-admin"></a>Hexo-admin</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hexo-admin&quot;&gt;&lt;a href=&quot;#Hexo-admin&quot; class=&quot;headerlink&quot; title=&quot;Hexo-admin&quot;&gt;&lt;/a&gt;Hexo-admin&lt;/h1&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux开机启动流程</title>
@@ -529,11 +550,11 @@
       <category term="系统优化" scheme="https://qiu-ye.github.io/categories/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/"/>
     
     
-      <category term="Linux" scheme="https://qiu-ye.github.io/tags/Linux/"/>
-    
       <category term="Ubuntu" scheme="https://qiu-ye.github.io/tags/Ubuntu/"/>
     
       <category term="grub" scheme="https://qiu-ye.github.io/tags/grub/"/>
+    
+      <category term="Linux" scheme="https://qiu-ye.github.io/tags/Linux/"/>
     
   </entry>
   

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hexo-admin]]></title>
+    <url>%2F2018%2F09%2F14%2FHexo-admin%2F</url>
+    <content type="text"><![CDATA[Hexo-admin]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Linux开机启动流程]]></title>
     <url>%2F2018%2F04%2F04%2FLinux%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[引子 ψ(._. )&gt; Linux系统开机流程 Linux系统开机流程：BIOS：Basic Input Output System电源开启，首先登场的是BIOS，即标准输入输出系统，它是电脑最开始执行的程序。它将执行以下步骤： 读取CMOS中的信息：了解计算机的硬件情况。例如： CPU的总线时钟 启动设备的搜索顺序 硬盘大小与型号 系统时间 即插即用设备 各设备的IO地址 中断请求等…… POST：加电自检。例如： 确定可用的内存 确定时钟速度等…… 对硬件进行初始化，设定即插即用设备。 有过重装系统经验的同学，会对此步骤有深切的理解。 重装系统或者需要使用WinPE工具时，要把制作好的U盘启动盘在开机之前插入USB口。 U盘启动盘此时即作为即插即用设备被识别、读取和设定。 BOOT Sequence：按次序查找引导设备。 第一个有引导程序的设备即为本次启动要用到的设备。 系统默认的启动顺序中本地硬盘通常是最靠前的，而BIOS会总是启动第一个有引导程序的设备。 因此，如果想加载启动U盘或者光盘中的系统，就要调整其启动顺序排在本地硬盘前面。 从启动设备中读取MBR，并将控制权移交给MBR中的程序。 MBR：Master Boot Reord 主引导记录区主引导记录区是位于整个硬盘的0磁道0柱面的第一个扇区，只有512个字节，它是由引导加载代码区、磁盘分区表和引导记录标识组成。 引导加载代码区（Master Boot Code）： 只有446字节大小 用于存放引导加载程序，即Bootloader，也就是说Bootloader能使用的最大空间为446字节。 磁盘分区表（Disk Partition Table）: 共有64字节大小 每个分区需要16个字节描述，硬盘分区表只能描述4个主分区，因此一块磁盘最多只有4个主分区。 如果需要更多分区就要将一个（或多个）主分区作为扩展分区。 要注意的是扩展分区是不能直接用作存储的，扩展分区也是主分区的一种，它必须至少包含一个逻辑分区，逻辑分区可以直接用于存储。 引导记录标识（Boot Record ID）: 2字节大小 0x55AA 这里面最重要当属Bootloader——引导加载器，它是在操作系统内核运行之前运行的一小段程序，负责将操作系统内核装入内存，然后将计算机控制权交给操作系统。Windows系统使用的BootLoader叫做ntloader。早期的Linux发行版上，普遍采用的Bootloader是LILO（LInux LOader），后来GRUB诞生了，以其强大的功能毫不留情地代替了LILO的位置。目前使用最广泛的GRUB（GRand Uniform Bootloader）全称应该是是GNU GRUB，现在已经更新到第二代，需要注意的是GRUB2相较于GRUB几乎完全重写，其优势主要表现在以下几点： GRUB是动态可配置的。 GRUB提供菜单供用户选择要启动的操作系统。 GRUB支持操作系统非常广泛。不但支持所有的Liunx，还能通过链式启动功能支持Windows和OS/2。 GRUB具有多种形式的用户界面。支持图形界面，能提供带有漂亮背景的启动菜单 GRUB拥有丰富的控制台命令与用户交互。 GRUB可以从镜像文件中启动操作系统。 GRUB支持链式启动。 GRUB支持多种语言，包括中文。 GRUB使用三段式引导启动，引导流程如下： 第一段：位于MBR中的Bootloader区，此阶段产生一个名为stage1的文件 第二段：位于紧接在MBR后面的位置，大概30K左右的代码，主要是文件系统的驱动程序，目的是找到第三段生成的主功能代码文件，此阶段产生一个名为stage1_5的文件。 第三段：位于磁盘上，位置不确定，放置GRUB的主功能代码，用于实现GRUB支持的所有功能，此阶段产生一个名为stage2的文件。 GRUB2使用四段式引导启动,要求必须提供1M的空白空间用于存放其核心代码，位置不限但必须位于2T空间以内，引导流程如下： 第一段：位于MBR中的Bootloader区，此阶段代码文件名为boot.img 第二段：位于存放GRUB2核心文件core.img的第一个扇区，大小为512字节，作用是将核心文件core.img余下的部分读入内存，此阶段代码文件名为diskboot.img 第三段：加载GRUB2的内核模块 第四段：启动操作界面，供用户选择需要启动的操作系统。 用户在GRUB的操作界面不仅可以选择要启动的内核或操作系统，还可以传递给内核启动参数，之后，就开始加载用户选择的内核或操作系统。 Kernel：加载内核内核镜像通常为bzImage的压缩格式，被加载到内存后先要进行自解压，之后跳转到startup_32函数。startup_32函数的执行代表着Linux第一个进程的开始，进行一番整理操作后便跳到Linux内核的主函数start_kernel。start_kernel函数执行过程中大部分时间都在为Linux内核准备必要的数据结构，以保证子模块的正常运行。完成数据结构初始化后，start_kernel会创建一个名为kernel_init的内核进程，然后进入死循环cpu_idle函数中（此进程的PID为0，主要工作就是调用CPU的idle指令，让CPU降温且省电）。kernel_init的主要工作有以下几点： 给硬件加载驱动程序 初始化网络堆栈 在多CPU的系统中让其他CPU开始工作 寻找并以只读方式挂载用户指定的根文件系统 当一切准备工作完成后，kernel_init会调用用户空间的第一个进程——/sbin/init。 需要注意的是在加载硬件驱动的时候，有可能会借助于ramdisk加载驱动，这一过程在CentOS 5和CentOS 6中体现为不同的流程。CentOS 5中的ramdisk可能会被缓存两次，在CentOS 6中改为文件系统ramfs。 CentOS 5：initrd，initrd在内存中开辟一块模拟的磁盘空间，Linux内核启动后，先将这个模拟的磁盘当作根文件系统，并执行initrd中的/linuxrc文件，开始加载那些内核要访问的真正的根文件系统所必需的驱动并挂接真正的根文件系统。之后从根分区中启动init进程 CentOS 6：initramfs，initramfs是一个使用gzip压缩的cpio打包文件。Linux内核将它的内容装入tmpfs，这就不需要附带任何文件驱动就能工作，并且tmpfs支持动态扩展。之后，initramfs直接启动init进程。根分区中的init程序作为备份，在没有initramfs的时候，内核才会挂接分区去找它。 init：init进程的执行基本标志着开机流程走到了最后一站，init进程会根据用户设定的运行级别对Linux系统进行一系列的初始化操作。比如：启动对应运行级别的服务进程、配置网络、继续为某些硬件加载驱动程序、运行相关软件等。但init进程不单单是做初始化，从系统的启动，一直到关机，init都在守护着系统的运行。随着技术的迭代，init程序在历史上有着许多个不同的身份： SysV：init，CentOS 5及之前的版本 配置文件：/etc/inittab 流程： /sbin/init –&gt; (/etc/inittab) –&gt; 设置默认运行级别 –&gt; 运行系统初始化脚本、完成系统初始化（/etc/rc.d/rc.sysinit） –&gt; 关闭对应的需要关闭的服务，启动需要启动的服务 –&gt; 设置登陆终端 系统初始化脚本：/etc/rc.d/rc.sysinit 设置主机名 设置欢迎信息 激活udev和selinux 挂载/etc/fstab文件中定义的文件系统 检测根文件系统，并以读写方式重新挂载根文件系统 设置系统时钟 激活swap设备 根据/etc/sysctl.conf文件设置内核参数 激活lvm及software raid设备 加载额外设备的驱动程序 清理操作 Upstart：init，CentOS 6，支持并行启动 配置文件：/etc/inittab，/etc/init/*.conf Systemd：systemd，CentOS 7， 配置文件：/usr/lib/systemd/system，/etc/systemd/system systemd新特性 系统引导时实现服务并行启动 按需激活进程 基于socket的激活机制，socket与服务程序分离 基于bus的激活机制 基于device的激活机制 基于path的激活机制 系统状态快照 保存各unit的当前状态信息于持久存储设备中 向后兼容sysv init脚本 基于依赖关系定义服务控制逻辑 完结撒花~撒花~★,°:.☆(￣▽￣)/$:.°★ 。]]></content>
@@ -171,9 +176,9 @@
         <category>系统优化</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>grub</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
