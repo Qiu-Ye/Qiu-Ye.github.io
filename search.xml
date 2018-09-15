@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[和大神打交道的礼节与教养]]></title>
+    <url>%2F2018%2F09%2F15%2F%E5%92%8C%E5%A4%A7%E7%A5%9E%E6%89%93%E4%BA%A4%E9%81%93%E7%9A%84%E7%A4%BC%E8%8A%82%E4%B8%8E%E6%95%99%E5%85%BB%2F</url>
+    <content type="text"><![CDATA[引子吾尝终日而思矣，不如须臾之所学也。吾尝跂而望矣，不如登高之博见也。登高而招，臂非加长也，而见者远。顺风而呼，声非加疾也，而闻者彰。假舆马者，非利足也，而致千里。假舟楫者，非能水也，而绝江河。君子生非异也，善假于物也。 ψ(._. )&gt; 谁都渴望有一天能被大神指点，让自己的技艺和思想高度突飞猛进。但和大神打交道时，一定要注意礼节与教养。永远不要忘记，只有尊重别人的人才配得到别人的尊重。 指导方针 确切地知道你想要问什么，并尽量明确具体。 小心而得体地组织你的问题。 记住你是在请求帮助。 不要显得好像是在要求对方回答。 组织好问题之后，停下来，再找找答案。 选出一些关键字，先试着从网上搜索一下（百度不到的东西，可以试一下Google）。 查找适当的常见问题解答列表。 决定你是想公开提问还是私下提问。 不管通过什么方式（邮件/论坛留言/私信……），要使用有意义的主题。 耐心等候。 大神往往都很忙。 没有人有义务每天等着回答你的问题（除非你使用付费咨询服务）。 最后请一定要感谢任何回应你的人。 对帮助你的人表示感谢是每个受教育的人所学的第一课。 如果你看到有人提出你能够解答的问题，尽你的一份力，参与解答。 首先，为别人讲解知识点是加深理解的最好学习方式。 其次，保持这一习惯，终有一天，你也可以成为大神。 完结撒花~撒花~★,°:.☆(￣▽￣)/$:.°★ 。]]></content>
+      <categories>
+        <category>修炼之道</category>
+      </categories>
+      <tags>
+        <tag>教养</tag>
+        <tag>尊重</tag>
+        <tag>如何提问</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于投资]]></title>
+    <url>%2F2018%2F09%2F15%2F%E5%85%B3%E4%BA%8E%E6%8A%95%E8%B5%84%2F</url>
+    <content type="text"><![CDATA[引子所知道的不同的事情越多，你就越有价值。 ψ(._. )&gt; 以下的指导方针不只适用于经济资产的投资，同样适用于职业生涯中知识资产的投资。其中的理念和智慧甚至可以扩展至整个人生。 指导方针 严肃的投资者定期投资——作为习惯 多元化是长期成功的关键 聪明的投资者在保守的投资和高风险、高回报的投资之间平衡他们的资产 投资者设法低买高卖，以获取最大回报 应周期性地重新评估和平衡资产 完结撒花~撒花~★,°:.☆(￣▽￣)/$:.°★ 。]]></content>
+      <categories>
+        <category>修炼之道</category>
+      </categories>
+      <tags>
+        <tag>投资</tag>
+        <tag>理财</tag>
+        <tag>人生智慧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hexo Admin Plugin]]></title>
     <url>%2F2018%2F09%2F14%2FHexo-admin%2F</url>
     <content type="text"><![CDATA[引子 发现了一个绝妙的Hexo博客管理工具Hexo-Admin，可以在浏览器上对博客内容和设置进行更新修改。 ψ(._. )&gt; Hexo Admin Plugin Hexo Admin Plugin功能预览 博客内容的管理 点击左边的大纲栏，可以直接对博客内容进行预览 点击文章名字的链接，可以查看文章部署后的效果 点击铅笔形状的图标，进入编辑界面，在浏览器上实现文字的编辑和Markdown实时预览 通过编写提交脚本实现自动化提交 安装步骤 初始化Hexo &amp; 创建一个博客 12345npm install -g hexocd ~/hexo init my-blogcd my-blognpm install 安装Hexo Admin Plugin 12npm install --save hexo-adminhexo server -d 在浏览器中打开http://localhost:4000/admin/，即可看到Hexo Admin的界面 其他 设置界面见Settings界面 更详细的参考文档见 Hexo site Github page for this plugin 完结撒花~撒花~★,°:.☆(￣▽￣)/$:.°★ 。]]></content>
