@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiu-ye.github.io/"/>
-  <updated>2018-09-20T04:03:53.553Z</updated>
+  <updated>2018-10-07T09:11:15.365Z</updated>
   <id>https://qiu-ye.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django入门</title>
+    <link href="https://qiu-ye.github.io/2018/10/06/Django%E5%85%A5%E9%97%A8/"/>
+    <id>https://qiu-ye.github.io/2018/10/06/Django入门/</id>
+    <published>2018-10-06T09:18:00.000Z</published>
+    <updated>2018-10-07T09:11:15.365Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p><img src="http://pf1jz9eu0.bkt.clouddn.com/18-10-6/85076748.jpg" alt=""></p><p>ψ(._. )&gt;</p><hr><p>Django入门</p><a id="more"></a><h3 id="Django入门"><a href="#Django入门" class="headerlink" title="Django入门"></a>Django入门</h3><h4 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h4><h5 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h5><p>要使用Django，首先需要建立一个虚拟工作环境。虚拟环境是系统的一个位置，你可以在其中安装包，并将其与其他的Python包隔离。</p><ol><li><p>建立虚拟环境</p><ul><li>file_dir$ <code>python -m venv ll_env</code></li></ul></li><li><p>激活虚拟环境</p><ul><li>*nux：<ul><li>file_dir$ <code>source ll_env/bin/activate</code></li></ul></li><li>windows：<ul><li>file_dir$ <code>ll_env\Scripts\activate</code></li></ul></li></ul></li><li><p>停止虚拟环境</p><ul><li>(ll_env)file_dir$ <code>deactivate</code></li></ul></li><li><p>安装Django</p><ul><li>(ll_env)file_dir$ <code>pip install Django</code></li></ul></li></ol><h5 id="创建Django项目"><a href="#创建Django项目" class="headerlink" title="创建Django项目"></a>创建Django项目</h5><p>在处于活动的虚拟环境下:<strong>(ll_env)file_dir$</strong></p><ol><li><p>新建项目</p><ul><li>(ll_env)file_dir$ <code>django-admin startproject project_name .</code><ul><li>注意：命令末尾的句点（·）让新项目使用合适的目录结构，这样开发完成后可轻松地将应用程序部署到服务器。</li></ul></li></ul></li><li><p>创建数据库</p><ul><li>(ll_env)file_dir$ <code>python manage.py migrate</code><ul><li>首次执行migrate命令时，将让Django确保数据库与项目的当前状态匹配。</li><li>SQLite是一种使用单个文件的数据库，是编写简单应用程序的理想选择，因为它让你不用太关注数据库管理的问题。</li></ul></li></ul></li><li><p>查看项目</p><ul><li>(ll_env)file_dir$ <code>python manage.py runserver</code></li></ul></li></ol><h5 id="创建应用程序"><a href="#创建应用程序" class="headerlink" title="创建应用程序"></a>创建应用程序</h5><p>保留仍在运行runserver的终端窗口，再打开一个终端窗口，并切换到manage.py所在的目录。</p><ol><li><p>激活新的虚拟环境</p></li><li><p>创建应用程序所需的基础文件</p><ul><li>(ll_env)file_dir$ <code>python manage.py startapp project_name_apps</code></li></ul></li><li><p>定义模型</p><ul><li>在file_dir/project_name_apps/models.py中定义模型。</li></ul></li><li><p>激活模型</p><ul><li>在file_dir/project_name/settings.py中的INSTALLED_APPS字段中新建应用程序片段。</li></ul></li><li><p>同步数据库</p><ul><li>修改数据库，使其能够存储与模型相关的信息。<ul><li>(ll_env)file_dir$ <code>python manage.py makemigrations project_name_apps</code></li></ul></li><li>执行数据库变更操作。<ul><li>(ll_env)file_dir$ <code>python manage.py migrate</code></li></ul></li></ul></li></ol><h5 id="管理网站"><a href="#管理网站" class="headerlink" title="管理网站"></a>管理网站</h5><p>为应用程序定义模型时，Django提供的管理网站能够很方便地处理模型。</p><ol><li><p>创建超级用户</p><ul><li>(ll_env)file_dir$ <code>python manage.py createsuperuser</code></li></ul></li><li><p>向管理网站注册模型</p><ul><li>在file_dir/project_name_apps/admin.py中注册自定义的模型。<ul><li>admin.site.register(model_name)</li></ul></li><li>访问 <a href="http://loaclhost:8000/admin/" target="_blank" rel="noopener">http://loaclhost:8000/admin/</a> ,用刚注册的超级用户账号登陆，进入管理界面。</li></ul></li><li><p>添加主题</p><ul><li>可以在管理界面进行添加主题的操作。</li></ul></li></ol><h5 id="创建网页"><a href="#创建网页" class="headerlink" title="创建网页"></a>创建网页</h5><p>使用Django创建网页的过程通常分为三个阶段：定义URL、编写视图和编写模板。</p><ol><li><p>映射URL</p><ul><li>在file_dir/project_name/urls.py中的urlpatterns字段注册应用程序的URL信息。</li><li>在file_dir/project_name_apps/中创建另一个urls.py,在此文件中对应用程序的URL进行详细映射。</li></ul></li><li><p>编写视图</p><ul><li>视图函数接受请求中的信息，准备好生成网页所需的数据，再将这些数据发送给浏览器。</li><li>在file_dir/project_name_apps/views.py中编写视图函数。</li></ul></li><li><p>编写模板</p><ul><li>模板定义了网页的结构。模板指定了网页是什么样的，而每当网页被请求时，Django将填入相关的数据。模板能够访问视图提供的所有数据。</li><li>新建目录file_dir/project_name_apps/templates/project_name_apps/存放模板，在该目录下新建HTML格式的模板文件。</li></ul></li></ol><hr><p>完结撒花~撒花~<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;引子&quot;&gt;&lt;a href=&quot;#引子&quot; class=&quot;headerlink&quot; title=&quot;引子&quot;&gt;&lt;/a&gt;引子&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://pf1jz9eu0.bkt.clouddn.com/18-10-6/85076748.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ψ(._. )&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Django入门&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="修炼之道" scheme="https://qiu-ye.github.io/categories/%E4%BF%AE%E7%82%BC%E4%B9%8B%E9%81%93/"/>
+    
+    
+      <category term="Python" scheme="https://qiu-ye.github.io/tags/Python/"/>
+    
+      <category term="Django" scheme="https://qiu-ye.github.io/tags/Django/"/>
+    
+  </entry>
   
   <entry>
     <title>Python常用方法汇总</title>
@@ -669,33 +696,6 @@
       <category term="Linux" scheme="https://qiu-ye.github.io/tags/Linux/"/>
     
       <category term="CentOS" scheme="https://qiu-ye.github.io/tags/CentOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Burg-基于grub的启动引导工具</title>
-    <link href="https://qiu-ye.github.io/2018/02/28/Burg-%E5%9F%BA%E4%BA%8Egrub%E7%9A%84%E5%90%AF%E5%8A%A8%E5%BC%95%E5%AF%BC%E5%B7%A5%E5%85%B7/"/>
-    <id>https://qiu-ye.github.io/2018/02/28/Burg-基于grub的启动引导工具/</id>
-    <published>2018-02-28T01:46:00.000Z</published>
-    <updated>2018-09-20T03:20:01.519Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Burg是一款漂亮的Linux引导装载程序，它基于grub，支持图形界面，适用于多操作系统电脑的启动引导，且支持多种多样的自定义主题。</p><h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-2018022818182692.png" alt="1"></p><a id="more"></a><h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><p>测试系统平台 Ubuntu 16.04</p><ol><li>添加PPA源<ul><li><code>sudo add-apt-repository ppa:n-muench/burg&amp;&amp;sudo apt-get update</code></li></ul></li><li>安装Burg<ul><li><code>sudo apt-get install burg burg-themes burg-emu</code></li><li>安装过程中会有几次配置界面<ul><li>前三项默认下一步<strong>&lt; OK &gt;</strong>即可。</li><li><code>GRUB install devices</code>选项中适用<code>空格</code>选择引导磁盘。</li></ul></li></ul></li><li>设置<ul><li>安装burg的主引导记录<code>sudo burg-install &quot;(hd0)&quot;</code></li></ul></li><li>主题安装<ul><li>去<a href="https://linux.linuxidc.com/linuxconf/download.php?file=Li9saW51eGZpbGVzL3B1Yi8yMDExLzEyLzIzL9TaVWJ1bnR1IDExLjEwyc+wstewNr/utqW8tsavwcG1xEJVUkfW98ziL2xpZ2h0bmVzc19mb3JfYnVyZ19ieV9zd29yaWdpbmFsLWQzMDFjdHUuemlw" target="_blank" rel="noopener">这个地址</a>下载主题<code>lightness</code>。</li><li>将下载的文件解压复制到/boot/burg/themes/中。</li><li>更新设置<code>sudo update-burg</code>。</li></ul></li><li>引导界面预览及主题设置<ul><li><code>sudo burg-emu</code></li><li>F1:帮助快捷键</li><li>t:选择主题，上下键切换，回车确认（个人认为<code>lightness</code>是最漂亮的）</li><li>F3：调整分辨率，建议重启后待burg实际运行时再调整分辨率，预览模式下可能会设置失败</li></ul></li><li>删除多余启动选项（可选）<ul><li>屏蔽多余启动项（操作有风险）<ul><li># menuentry ‘Ubuntu GNU/Linux, with Linux 4.4.0-105-generic (recovery mode)’…{}</li><li># menuentry ‘Ubuntu GNU/Linux, with Linux 4.4.0-102-generic’…{}</li><li># menuentry ‘Ubuntu GNU/Linux, with Linux 4.4.0-102-generic (recovery mode)’…{}</li></ul></li><li>将Windows系统启动项放在前面<ul><li>把 menuentry “Windows 10 (loader) (on /dev/sdb1)”…{}</li><li>放在 menuentry ‘Ubuntu GNU/Linux, with Linux 4.4.0-105-generic’…{} 即可。</li></ul></li><li>修改后要更新一下设置<ul><li><code>sudo update-burg</code></li></ul></li></ul></li><li>重启就可以看到漂亮的引导界面了<ul><li>☺</li></ul></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;Burg是一款漂亮的Linux引导装载程序，它基于grub，支持图形界面，适用于多操作系统电脑的启动引导，且支持多种多样的自定义主题。&lt;/p&gt;
-&lt;h3 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-2018022818182692.png&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="磨刀不误砍柴工" scheme="https://qiu-ye.github.io/categories/%E7%A3%A8%E5%88%80%E4%B8%8D%E8%AF%AF%E7%A0%8D%E6%9F%B4%E5%B7%A5/"/>
-    
-    
-      <category term="Linux" scheme="https://qiu-ye.github.io/tags/Linux/"/>
-    
-      <category term="Ubuntu" scheme="https://qiu-ye.github.io/tags/Ubuntu/"/>
-    
-      <category term="Grub" scheme="https://qiu-ye.github.io/tags/Grub/"/>
     
   </entry>
   
