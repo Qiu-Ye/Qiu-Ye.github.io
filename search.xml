@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[固态硬盘那些事]]></title>
+    <url>%2F2018%2F10%2F23%2F%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98%E9%82%A3%E4%BA%9B%E4%BA%8B%2F</url>
+    <content type="text"><![CDATA[引子 ψ(._. )&gt; 这两天帮同学换/修固态硬盘，记几件关于SSD的小tips。 固态硬盘那些事克隆硬盘——老机升级固态硬盘的最快方法身边的朋友在我的安利基本上都为自己几年的老本本换上了固态硬盘。其他的还在观望的大多是考虑到重做系统后的软件恢复太麻烦，驱动安装和常用软件重装是小事，各种仿真软件、IDE、办公软件的安装与破解、不同花样的编程环境配置、一些小型的效率工具软件的个性化设置等等……才是最让人头大的，极大的降低了折腾欲望。 而此次作系统的时候，我没有选择重头开始，而是使用了DiskGenius软件中的克隆磁盘功能。 该功能可以按照不同的方式将源磁盘上的所有内容全部复制到目标磁盘中，甚至可以精确到磁盘扇区。这样以来，只需要找到一块符合要求的源磁盘，将数据完整克隆至新磁盘中，即可免去系统重装的繁琐事务，迅速的得到一块含有完整系统数据、软件数据的磁盘。所谓“符合要求”的源磁盘，需满足以下条件： 源磁盘的容量大小应与目标磁盘一致。（必须） 源磁盘中的所有软件都可以脱离其他磁盘正常运行。也就是说，所有软件的安装位置都在C盘或者D盘中，软件正常运行需要的资源（注册表和数据）依赖都限定在此块磁盘内。（必须） 源磁盘中软件的安装位置整洁规范。软件最好都放在D盘的Program Files (x86)文件夹里，每个软件单独存放在软件名命名的文件夹中。 克隆结束后，直接将新磁盘装入电脑中，第一次开机通常会触发磁盘检查，不要跳过这一步，让系统自动进行检查和修复。修复完成后即可进入系统，这是一个和源磁盘完全相同的系统，系统配置、桌面、应用软件都完全一样，编程环境也不需要重新设置，新系统直接就可以投入工作。另外，新系统克隆完有几点需要注意的地方： 如果源磁盘中的系统是数字权利激活的，新系统的激活验证会失败，自己想办法激活一下即可。 新系统中的驱动需要更新一下。 源系统的账号信息也会完整保留，需要更改一下。 尽量将浏览器重置。浏览器会记录账号密码情况，处于对别人隐私的尊重，请务必重置浏览器。 使用这种方法，可以大大缩短升级SSD的时间成本。从克隆硬盘、拆机安装到新系统就位，基本可以控制在半小时以内。虽然有条件要求，但如果在购置SSD之前就找一个在电脑使用方面保持好习惯同学，问清楚他作为系统盘的固态硬盘容量大小，后续的升级过程就会如丝般顺滑。 出现“掉盘”问题的SSD还有救吗同学的SanDisk SSD PLUS 120G的固态在使用过程中，由于一次强制关机，导致硬盘无法被识别，即“掉盘”问题。通过从网上查资料，我尝试着修复这块SSD，在经过多次尝试，最终复活了这块SSD，把步骤和思路记录下来。 拆开SSD，确认主控芯片的型号。 这块闪迪的SSD使用的主控芯片是慧荣SM2256XT芯片。 该芯片属于常见的固态硬盘主控型号，U盘量产网的SSD专区有很多相关的资源和量产工具。 通过短接PCB上的触点，使得SSD被重新识别。 通过在论坛的搜索得知，不同的SSD型号的短接方式不同，但通常PCB上会预留出能进行的短接的焊盘孔。 该型号的短接触点在丝印ROM字样旁边，有两个距离很近的焊盘孔，用导线短接。 把短接处理后的PCB装在支持SATA口的硬盘盒里，硬盘盒的USB端接到电脑上，如果短接的触点没有错误的话，在系统的磁盘管理界面可以识别出磁盘，容量大概1G左右。 此处需要注意：这一步的操作最好在Win7系统的电脑上进行。我在Win10 64位的电脑上操作时始终没有反应。在偶然看到一篇帖子上提到Win10 64位系统可能出问题后，换至Win7系统上，顺利识别。 识别后就要把短接线去掉（这一步很关键，负责后续的操作会报错） 去U盘量产网的SSD专区下载主控芯片专用的量产工具。 量产工具有很多版本，版本不同表示时间不同，其支持的Flash芯片也不一样。 打开量产软件，对磁盘进行重新量产操作。 点击Scan Drive按钮，顺利的话界面会显示Ready字样。 切换到parameter界面，点击auto，在Flash Select处选择相应的型号。如果Flash Select处识别为空，则说明量产工具的版本出错，需要重新去网上下载。 在尝试了足足5个版本的量产软件后，sm2246XT_MPTool_O0311A版本成功识别出Flash的型号。至今不知道需要依据什么选择量产工具的版本。 回到test界面点击start，待界面下方的图标上显示一个绿色的“O”后，磁盘修复完成。 重新插拔移动硬盘即可正常识别，满血复活。 完结撒花~撒花~★,°:.☆(￣▽￣)/$:.°★ 。]]></content>
+      <categories>
+        <category>磨刀不误砍柴工</category>
+      </categories>
+      <tags>
+        <tag>SSD</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Django入门]]></title>
     <url>%2F2018%2F10%2F06%2FDjango%E5%85%A5%E9%97%A8%2F</url>
     <content type="text"><![CDATA[引子 ψ(._. )&gt; Django入门 Django入门建立项目虚拟环境要使用Django，首先需要建立一个虚拟工作环境。虚拟环境是系统的一个位置，你可以在其中安装包，并将其与其他的Python包隔离。 建立虚拟环境 file_dir$ python -m venv ll_env 激活虚拟环境 *nux： file_dir$ source ll_env/bin/activate windows： file_dir$ ll_env\Scripts\activate 停止虚拟环境 (ll_env)file_dir$ deactivate 安装Django (ll_env)file_dir$ pip install Django 创建Django项目在处于活动的虚拟环境下:(ll_env)file_dir$ 新建项目 (ll_env)file_dir$ django-admin startproject project_name . 注意：命令末尾的句点（·）让新项目使用合适的目录结构，这样开发完成后可轻松地将应用程序部署到服务器。 创建数据库 (ll_env)file_dir$ python manage.py migrate 首次执行migrate命令时，将让Django确保数据库与项目的当前状态匹配。 SQLite是一种使用单个文件的数据库，是编写简单应用程序的理想选择，因为它让你不用太关注数据库管理的问题。 查看项目 (ll_env)file_dir$ python manage.py runserver 创建应用程序保留仍在运行runserver的终端窗口，再打开一个终端窗口，并切换到manage.py所在的目录。 激活新的虚拟环境 创建应用程序所需的基础文件 (ll_env)file_dir$ python manage.py startapp project_name_apps 定义模型 在file_dir/project_name_apps/models.py中定义模型。 激活模型 在file_dir/project_name/settings.py中的INSTALLED_APPS字段中新建应用程序片段。 同步数据库 修改数据库，使其能够存储与模型相关的信息。 (ll_env)file_dir$ python manage.py makemigrations project_name_apps 执行数据库变更操作。 (ll_env)file_dir$ python manage.py migrate 管理网站为应用程序定义模型时，Django提供的管理网站能够很方便地处理模型。 创建超级用户 (ll_env)file_dir$ python manage.py createsuperuser 向管理网站注册模型 在file_dir/project_name_apps/admin.py中注册自定义的模型。 admin.site.register(model_name) 访问 http://loaclhost:8000/admin/ ,用刚注册的超级用户账号登陆，进入管理界面。 添加主题 可以在管理界面进行添加主题的操作。 创建网页使用Django创建网页的过程通常分为三个阶段：定义URL、编写视图和编写模板。 映射URL 在file_dir/project_name/urls.py中的urlpatterns字段注册应用程序的URL信息。 在file_dir/project_name_apps/中创建另一个urls.py,在此文件中对应用程序的URL进行详细映射。 编写视图 视图函数接受请求中的信息，准备好生成网页所需的数据，再将这些数据发送给浏览器。 在file_dir/project_name_apps/views.py中编写视图函数。 编写模板 模板定义了网页的结构。模板指定了网页是什么样的，而每当网页被请求时，Django将填入相关的数据。模板能够访问视图提供的所有数据。 新建目录file_dir/project_name_apps/templates/project_name_apps/存放模板，在该目录下新建HTML格式的模板文件。 完结撒花~撒花~★,°:.☆(￣▽￣)/$:.°★ 。]]></content>
@@ -91,8 +102,8 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>Grub</tag>
         <tag>CentOS</tag>
+        <tag>Grub</tag>
       </tags>
   </entry>
   <entry>
@@ -130,8 +141,8 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>Grub</tag>
         <tag>CentOS</tag>
+        <tag>Grub</tag>
       </tags>
   </entry>
   <entry>
@@ -143,8 +154,8 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-        <tag>Grub</tag>
         <tag>CentOS</tag>
+        <tag>Grub</tag>
       </tags>
   </entry>
   <entry>

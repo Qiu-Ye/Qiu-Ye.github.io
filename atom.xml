@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiu-ye.github.io/"/>
-  <updated>2018-10-07T09:27:23.004Z</updated>
+  <updated>2018-10-23T10:20:30.089Z</updated>
   <id>https://qiu-ye.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>固态硬盘那些事</title>
+    <link href="https://qiu-ye.github.io/2018/10/23/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
+    <id>https://qiu-ye.github.io/2018/10/23/固态硬盘那些事/</id>
+    <published>2018-10-23T06:52:00.000Z</published>
+    <updated>2018-10-23T10:20:30.089Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p><img src="http://pf1jz9eu0.bkt.clouddn.com/18-10-23/43985557.jpg" alt=""></p><p>ψ(._. )&gt;</p><hr><p>这两天帮同学换/修固态硬盘，记几件关于SSD的小tips。</p><a id="more"></a><h3 id="固态硬盘那些事"><a href="#固态硬盘那些事" class="headerlink" title="固态硬盘那些事"></a>固态硬盘那些事</h3><h4 id="克隆硬盘——老机升级固态硬盘的最快方法"><a href="#克隆硬盘——老机升级固态硬盘的最快方法" class="headerlink" title="克隆硬盘——老机升级固态硬盘的最快方法"></a>克隆硬盘——老机升级固态硬盘的最快方法</h4><p>身边的朋友在我的安利基本上都为自己几年的老本本换上了固态硬盘。其他的还在观望的大多是考虑到重做系统后的软件恢复太麻烦，驱动安装和常用软件重装是小事，各种仿真软件、IDE、办公软件的安装与破解、不同花样的编程环境配置、一些小型的效率工具软件的个性化设置等等……才是最让人头大的，极大的降低了折腾欲望。</p><p>而此次作系统的时候，我没有选择重头开始，而是使用了<strong>DiskGenius</strong>软件中的<strong>克隆磁盘</strong>功能。</p><p><img src="http://pf1jz9eu0.bkt.clouddn.com/18-10-23/35288163.jpg" alt=""></p><p>该功能可以按照不同的方式将源磁盘上的所有内容全部复制到目标磁盘中，甚至可以精确到磁盘扇区。这样以来，只需要找到一块符合要求的源磁盘，将数据完整克隆至新磁盘中，即可免去系统重装的繁琐事务，迅速的得到一块含有完整系统数据、软件数据的磁盘。所谓“符合要求”的源磁盘，需满足以下条件：</p><ul><li>源磁盘的容量大小应与目标磁盘一致。（必须）</li><li>源磁盘中的所有软件都可以脱离其他磁盘正常运行。也就是说，所有软件的安装位置都在C盘或者D盘中，软件正常运行需要的资源（注册表和数据）依赖都限定在此块磁盘内。（必须）</li><li>源磁盘中软件的安装位置整洁规范。软件最好都放在D盘的<code>Program Files (x86)</code>文件夹里，每个软件单独存放在软件名命名的文件夹中。</li></ul><p><img src="http://pf1jz9eu0.bkt.clouddn.com/18-10-23/5512628.jpg" alt=""></p><p>克隆结束后，直接将新磁盘装入电脑中，第一次开机通常会触发磁盘检查，不要跳过这一步，让系统自动进行检查和修复。修复完成后即可进入系统，这是一个和源磁盘完全相同的系统，系统配置、桌面、应用软件都完全一样，编程环境也不需要重新设置，新系统直接就可以投入工作。另外，新系统克隆完有几点需要注意的地方：</p><ul><li>如果源磁盘中的系统是数字权利激活的，新系统的激活验证会失败，自己想办法激活一下即可。</li><li>新系统中的驱动需要更新一下。</li><li>源系统的账号信息也会完整保留，需要更改一下。</li><li>尽量将浏览器重置。浏览器会记录账号密码情况，处于对别人隐私的尊重，请务必重置浏览器。</li></ul><p>使用这种方法，可以大大缩短升级SSD的时间成本。从克隆硬盘、拆机安装到新系统就位，基本可以控制在半小时以内。虽然有条件要求，但如果在购置SSD之前就找一个在电脑使用方面保持好习惯同学，问清楚他作为系统盘的固态硬盘容量大小，后续的升级过程就会如丝般顺滑。</p><h4 id="出现“掉盘”问题的SSD还有救吗"><a href="#出现“掉盘”问题的SSD还有救吗" class="headerlink" title="出现“掉盘”问题的SSD还有救吗"></a>出现“掉盘”问题的SSD还有救吗</h4><p>同学的<code>SanDisk SSD PLUS</code> 120G的固态在使用过程中，由于一次强制关机，导致硬盘无法被识别，即“掉盘”问题。通过从网上查资料，我尝试着修复这块SSD，在经过多次尝试，最终复活了这块SSD，把步骤和思路记录下来。</p><ol><li><p>拆开SSD，确认主控芯片的型号。</p><ul><li>这块闪迪的SSD使用的主控芯片是<code>慧荣SM2256XT芯片</code>。</li><li>该芯片属于常见的固态硬盘主控型号，<a href="http://www.upantool.com/ssd/tool/smi/" target="_blank" rel="noopener">U盘量产网的SSD专区</a>有很多相关的资源和量产工具。</li></ul></li><li><p>通过短接PCB上的触点，使得SSD被重新识别。</p><ul><li>通过在论坛的搜索得知，不同的SSD型号的短接方式不同，但通常PCB上会预留出能进行的短接的焊盘孔。</li><li>该型号的短接触点在丝印ROM字样旁边，有两个距离很近的焊盘孔，用导线短接。</li><li>把短接处理后的PCB装在支持SATA口的硬盘盒里，硬盘盒的USB端接到电脑上，如果短接的触点没有错误的话，在系统的磁盘管理界面可以识别出磁盘，容量大概1G左右。<ul><li>此处需要注意：这一步的操作最好在Win7系统的电脑上进行。我在Win10 64位的电脑上操作时始终没有反应。在偶然看到一篇帖子上提到Win10 64位系统可能出问题后，换至Win7系统上，顺利识别。</li></ul></li><li>识别后就要把短接线去掉（这一步很关键，负责后续的操作会报错）</li></ul></li><li><p>去<a href="http://www.upantool.com/ssd/tool/smi/" target="_blank" rel="noopener">U盘量产网的SSD专区</a>下载主控芯片专用的量产工具。</p><ul><li>量产工具有很多版本，版本不同表示时间不同，其支持的Flash芯片也不一样。</li></ul></li><li><p>打开量产软件，对磁盘进行重新量产操作。</p><ul><li><p>点击Scan Drive按钮，顺利的话界面会显示Ready字样。</p><p><img src="http://pf1jz9eu0.bkt.clouddn.com/18-10-23/817680.jpg" alt=""></p></li><li><p>切换到parameter界面，点击auto，在Flash Select处选择相应的型号。如果Flash Select处识别为空，则说明量产工具的版本出错，需要重新去网上下载。</p><ul><li>在尝试了足足5个版本的量产软件后，sm2246XT_MPTool_O0311A版本成功识别出Flash的型号。至今不知道需要依据什么选择量产工具的版本。</li></ul><p><img src="http://pf1jz9eu0.bkt.clouddn.com/18-10-23/12130994.jpg" alt=""></p></li><li><p>回到test界面点击start，待界面下方的图标上显示一个绿色的“O”后，磁盘修复完成。</p></li></ul></li><li><p>重新插拔移动硬盘即可正常识别，满血复活。</p></li></ol><hr><p>完结撒花~撒花~<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;引子&quot;&gt;&lt;a href=&quot;#引子&quot; class=&quot;headerlink&quot; title=&quot;引子&quot;&gt;&lt;/a&gt;引子&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://pf1jz9eu0.bkt.clouddn.com/18-10-23/43985557.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ψ(._. )&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这两天帮同学换/修固态硬盘，记几件关于SSD的小tips。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="磨刀不误砍柴工" scheme="https://qiu-ye.github.io/categories/%E7%A3%A8%E5%88%80%E4%B8%8D%E8%AF%AF%E7%A0%8D%E6%9F%B4%E5%B7%A5/"/>
+    
+    
+      <category term="SSD" scheme="https://qiu-ye.github.io/tags/SSD/"/>
+    
+  </entry>
   
   <entry>
     <title>Django入门</title>
@@ -228,9 +253,9 @@
     
       <category term="Linux" scheme="https://qiu-ye.github.io/tags/Linux/"/>
     
-      <category term="Grub" scheme="https://qiu-ye.github.io/tags/Grub/"/>
-    
       <category term="CentOS" scheme="https://qiu-ye.github.io/tags/CentOS/"/>
+    
+      <category term="Grub" scheme="https://qiu-ye.github.io/tags/Grub/"/>
     
   </entry>
   
@@ -314,9 +339,9 @@
     
       <category term="Linux" scheme="https://qiu-ye.github.io/tags/Linux/"/>
     
-      <category term="Grub" scheme="https://qiu-ye.github.io/tags/Grub/"/>
-    
       <category term="CentOS" scheme="https://qiu-ye.github.io/tags/CentOS/"/>
+    
+      <category term="Grub" scheme="https://qiu-ye.github.io/tags/Grub/"/>
     
   </entry>
   
@@ -342,9 +367,9 @@
     
       <category term="Linux" scheme="https://qiu-ye.github.io/tags/Linux/"/>
     
-      <category term="Grub" scheme="https://qiu-ye.github.io/tags/Grub/"/>
-    
       <category term="CentOS" scheme="https://qiu-ye.github.io/tags/CentOS/"/>
+    
+      <category term="Grub" scheme="https://qiu-ye.github.io/tags/Grub/"/>
     
   </entry>
   
@@ -655,37 +680,6 @@
 &lt;li&gt;-gid GroupID：GID&lt;/li&gt;
 &lt;li&gt;-nouser：无属主&lt;/li&gt;
 &lt;li&gt;-nogroup：无属组&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="系统运维" scheme="https://qiu-ye.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="Linux" scheme="https://qiu-ye.github.io/tags/Linux/"/>
-    
-      <category term="CentOS" scheme="https://qiu-ye.github.io/tags/CentOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>条件测试符号总结</title>
-    <link href="https://qiu-ye.github.io/2018/02/28/%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95%E7%AC%A6%E5%8F%B7%E6%80%BB%E7%BB%93/"/>
-    <id>https://qiu-ye.github.io/2018/02/28/条件测试符号总结/</id>
-    <published>2018-02-28T04:45:14.000Z</published>
-    <updated>2018-03-09T01:51:50.983Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Linux系统中常用的条件测试符"><a href="#Linux系统中常用的条件测试符" class="headerlink" title="Linux系统中常用的条件测试符"></a>Linux系统中常用的条件测试符</h1><h3 id="数值测试"><a href="#数值测试" class="headerlink" title="数值测试"></a>数值测试</h3><ul><li>-gt：是否大于</li><li>-ge：是否大于等于</li><li>-eq：是否等于</li><li>-ne：是否不等于</li><li>-lt：是否小于</li><li>-le：是否小于等于</li></ul><a id="more"></a><h3 id="字符串测试"><a href="#字符串测试" class="headerlink" title="字符串测试"></a>字符串测试</h3><ul><li>=~：左侧字符串是否能够被右侧的PATTERN所匹配<ul><li>此表达式一般用于[[ ]]中</li></ul></li><li>-z：测试字符串是否为空</li><li>-n：测试字符串是否不空</li></ul><h3 id="文件测试"><a href="#文件测试" class="headerlink" title="文件测试"></a>文件测试</h3><ul><li>-a/e：存在</li><li>-b -c -d -f -h/L -p -S：块 字符 目录 普通 符号连接 管道 套接字</li><li>-r/w/x：写权限 读权限 执行权限</li><li>-g/u/k：sgid suid sticky</li><li>-s：是否存在且非空</li><li>-t：是否被打开</li><li>-N：文件自从上次被读取后是否被修改</li><li>-O：当前用户是否是文件属主</li><li>-G：当前用户是否是文件属组</li><li>FILE1 -ef FILE2：两个文件是否指向同一个设备上的同一个inode</li><li>FILE1 -nt FILE2：FILE1是否新于FILE2</li><li>FILE1 -ot FILE2：FILE1是否旧于FILE2</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Linux系统中常用的条件测试符&quot;&gt;&lt;a href=&quot;#Linux系统中常用的条件测试符&quot; class=&quot;headerlink&quot; title=&quot;Linux系统中常用的条件测试符&quot;&gt;&lt;/a&gt;Linux系统中常用的条件测试符&lt;/h1&gt;&lt;h3 id=&quot;数值测试&quot;&gt;&lt;a href=&quot;#数值测试&quot; class=&quot;headerlink&quot; title=&quot;数值测试&quot;&gt;&lt;/a&gt;数值测试&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;-gt：是否大于&lt;/li&gt;
-&lt;li&gt;-ge：是否大于等于&lt;/li&gt;
-&lt;li&gt;-eq：是否等于&lt;/li&gt;
-&lt;li&gt;-ne：是否不等于&lt;/li&gt;
-&lt;li&gt;-lt：是否小于&lt;/li&gt;
-&lt;li&gt;-le：是否小于等于&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
