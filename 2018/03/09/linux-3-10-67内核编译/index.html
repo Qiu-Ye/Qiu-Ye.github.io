@@ -96,15 +96,15 @@
 <meta property="og:site_name" content="QiuYe">
 <meta property="og:description" content="引子The Kernel is the cornerstone！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-2018030909314328.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308145057627.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308145648842.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308214218106.png">
-<meta property="og:updated_time" content="2018-03-09T01:51:06.267Z">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/5147893.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/67211362.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/65937800.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/70595930.jpg">
+<meta property="og:updated_time" content="2018-11-02T07:14:18.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux-3.10.67内核编译">
 <meta name="twitter:description" content="引子The Kernel is the cornerstone！">
-<meta name="twitter:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-2018030909314328.png">
+<meta name="twitter:image" content="http://img.qiuye.online/18-11-2/5147893.jpg">
 
 
 
@@ -476,7 +476,7 @@
       
         <h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>The Kernel is the cornerstone！</p>
 <hr>
-<p><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-2018030909314328.png" alt="0"></p>
+<p><img src="http://img.qiuye.online/18-11-2/5147893.jpg" alt=""></p>
 <a id="more"></a>
 <h3 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h3><p>以编译Linux-2.6.32-504内核参数设置为模板，进行linux-3.10.67内核编译。</p>
 <h3 id="操作平台"><a href="#操作平台" class="headerlink" title="操作平台"></a>操作平台</h3><ul>
@@ -520,17 +520,17 @@
 <li><code>tar xf linux-3.10.67.tar.xz -C /usr/src</code>：将源码解压至/usr/src</li>
 <li><code>ln -sv /usr/src/linux-3.10.67 /usr/src/linux</code></li>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308145057627.png" alt="1"></li>
+<li><img src="http://img.qiuye.online/18-11-2/67211362.jpg" alt=""></li>
 <li><code>cd /usr/src/linux</code>：进入源码目录</li>
 <li><code>cp /boot/config-2.6.32-504.el6.x86_64 .config</code>：复制现有的系统内核配置文件作为模板备用</li>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308145648842.png" alt="2"></li>
+<li><img src="http://img.qiuye.online/18-11-2/65937800.jpg" alt=""></li>
 <li><code>make menuconfig</code>：启动图形界面配置内核参数，按照需求安装<ul>
 <li>如果报错，则需安装ncurses：<code>yum install ncurses-devel.x86_64</code></li>
 </ul>
 </li>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308214218106.png" alt=""></li>
+<li><img src="http://img.qiuye.online/18-11-2/70595930.jpg" alt=""></li>
 <li><code>screen</code>：开启一个虚拟屏幕，以防止编译过程中ssh断开连接，导致编译失败<ul>
 <li><code>Ctrl+a，d</code>快捷键可以切出虚拟屏幕，即使关闭ssh连接，屏幕中运行的编译任务仍不会断开</li>
 <li><code>screen -ls</code>：列出正在运行的虚拟屏幕ID号</li>
@@ -562,7 +562,7 @@
   <p><span>本文标题:</span><a href="/2018/03/09/linux-3-10-67内核编译/">linux-3.10.67内核编译</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 QiuYe 的个人博客">QiuYe</a></p>
   <p><span>发布时间:</span>2018年03月09日 - 09:03</p>
-  <p><span>最后更新:</span>2018年03月09日 - 09:03</p>
+  <p><span>最后更新:</span>2018年11月02日 - 15:11</p>
   <p><span>原始链接:</span><a href="/2018/03/09/linux-3-10-67内核编译/" title="linux-3.10.67内核编译">https://qiu-ye.github.io/2018/03/09/linux-3-10-67内核编译/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://qiu-ye.github.io/2018/03/09/linux-3-10-67内核编译/"  aria-label="复制成功！"></i></span>
   </p>

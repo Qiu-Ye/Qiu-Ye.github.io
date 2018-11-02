@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Linux,CentOS,Grub," />
+  <meta name="keywords" content="Linux,Grub,CentOS," />
 
 
 
@@ -89,26 +89,26 @@
 
 
 <meta name="description" content="引子 Family always bless you without any conditions!                               —— 《COCO》 from Pixar   对于操作系统来说，系统安装盘就是它永远的家。系统动不起来，找妈妈（系统盘）就对了。">
-<meta name="keywords" content="Linux,CentOS,Grub">
+<meta name="keywords" content="Linux,Grub,CentOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用GRUB工具修复被损坏的MBR">
 <meta property="og:url" content="https://qiu-ye.github.io/2018/03/08/使用GRUB工具修复损坏的MBR/index.html">
 <meta property="og:site_name" content="QiuYe">
 <meta property="og:description" content="引子 Family always bless you without any conditions!                               —— 《COCO》 from Pixar   对于操作系统来说，系统安装盘就是它永远的家。系统动不起来，找妈妈（系统盘）就对了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102240847.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102507264.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102636475.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102726405.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102858401.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102933281.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308103139195.png">
-<meta property="og:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308103441244.png">
-<meta property="og:updated_time" content="2018-09-15T04:15:09.801Z">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/9817137.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/60062487.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/68853197.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/26714683.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/68710285.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/61487049.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/66301389.jpg">
+<meta property="og:image" content="http://img.qiuye.online/18-11-2/12859853.jpg">
+<meta property="og:updated_time" content="2018-11-02T07:23:51.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用GRUB工具修复被损坏的MBR">
 <meta name="twitter:description" content="引子 Family always bless you without any conditions!                               —— 《COCO》 from Pixar   对于操作系统来说，系统安装盘就是它永远的家。系统动不起来，找妈妈（系统盘）就对了。">
-<meta name="twitter:image" content="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102240847.png">
+<meta name="twitter:image" content="http://img.qiuye.online/18-11-2/9817137.jpg">
 
 
 
@@ -509,7 +509,7 @@
 <li><code>grub-install --root-directory=/ /dev/sda</code>：安装gurb，恢复MBR</li>
 <li><code>sync</code></li>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102240847.png" alt=""></li>
+<li><img src="http://img.qiuye.online/18-11-2/9817137.jpg" alt=""> </li>
 </ul>
 </li>
 <li>方法二：<ul>
@@ -517,7 +517,7 @@
 <li>grub&gt; <code>root (hd0,0)</code>：指定MBR所在的磁盘分区</li>
 <li>grub&gt; <code>setup （hd0）</code>：安装GRUB</li>
 <li><code>sync</code></li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102507264.png" alt=""></li>
+<li><img src="http://img.qiuye.online/18-11-2/60062487.jpg" alt=""></li>
 </ul>
 </li>
 </ul>
@@ -526,20 +526,20 @@
 <li>载入安装光盘</li>
 <li>启动系统进入系统安装界面<ul>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102636475.png" alt=""></li>
+<li><img src="http://img.qiuye.online/18-11-2/68853197.jpg" alt=""></li>
 </ul>
 </li>
 <li>进入救援模式<ul>
 <li>选择<code>Rescue installed system</code>选项</li>
 <li>或在命令行模式下（esc键），键入<code>linux rescue</code></li>
-<li>ψ(._. )&gt; <img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102726405.png" alt=""></li>
+<li>ψ(._. )&gt; <img src="http://img.qiuye.online/18-11-2/26714683.jpg" alt=""></li>
 </ul>
 </li>
 <li>前面的设置略过不表<ul>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102858401.png" alt=""></li>
+<li><img src="http://img.qiuye.online/18-11-2/68710285.jpg" alt=""></li>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308102933281.png" alt=""></li>
+<li><img src="http://img.qiuye.online/18-11-2/61487049.jpg" alt=""></li>
 </ul>
 </li>
 <li>Start shell<ul>
@@ -547,7 +547,7 @@
 <li><code>grub-install --root-directory=/ /dev/sda</code>：安装gurb，恢复MBR</li>
 <li><code>exit</code>：退回到原来的根目录</li>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308103139195.png" alt="e"></li>
+<li><img src="http://img.qiuye.online/18-11-2/66301389.jpg" alt=""></li>
 <li><code>reboot</code>：重启时记得把安装光盘卸载</li>
 </ul>
 </li>
@@ -555,7 +555,7 @@
 </li>
 <li><strong>此时系统即可正常启动！完结撒花~撒花~<em>★,°</em>:.☆(￣▽￣)/$:<em>.°★</em> 。</strong><ul>
 <li>ψ(._. )&gt;</li>
-<li><img src="http://p4uvkkxs2.bkt.clouddn.com/markdown-img-paste-20180308103441244.png" alt=""></li>
+<li><img src="http://img.qiuye.online/18-11-2/12859853.jpg" alt=""></li>
 </ul>
 </li>
 </ol>
@@ -578,7 +578,7 @@
   <p><span>本文标题:</span><a href="/2018/03/08/使用GRUB工具修复损坏的MBR/">使用GRUB工具修复被损坏的MBR</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 QiuYe 的个人博客">QiuYe</a></p>
   <p><span>发布时间:</span>2018年03月08日 - 10:03</p>
-  <p><span>最后更新:</span>2018年09月15日 - 12:09</p>
+  <p><span>最后更新:</span>2018年11月02日 - 15:11</p>
   <p><span>原始链接:</span><a href="/2018/03/08/使用GRUB工具修复损坏的MBR/" title="使用GRUB工具修复被损坏的MBR">https://qiu-ye.github.io/2018/03/08/使用GRUB工具修复损坏的MBR/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://qiu-ye.github.io/2018/03/08/使用GRUB工具修复损坏的MBR/"  aria-label="复制成功！"></i></span>
   </p>
@@ -632,9 +632,9 @@
           
             <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
           
-            <a href="/tags/CentOS/" rel="tag"><i class="fa fa-tag"></i> CentOS</a>
-          
             <a href="/tags/Grub/" rel="tag"><i class="fa fa-tag"></i> Grub</a>
+          
+            <a href="/tags/CentOS/" rel="tag"><i class="fa fa-tag"></i> CentOS</a>
           
         </div>
       
